@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { loginReducer } from "./reducers/login.reducer";
+import { sidebarReducer } from "./reducers/sidebar.reducer";
 
 const persistConfig = {
   key: "root",
@@ -11,7 +12,7 @@ const persistConfig = {
   whitelist: ["loginReducer"],
 };
 
-const combinedReducers = combineReducers({ loginReducer });
+const combinedReducers = combineReducers({ loginReducer, sidebarReducer });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);
 

@@ -5,13 +5,11 @@ import axios from "axios";
 import { connect } from "react-redux";
 import loginActions from "../redux/actions/login.actions";
 import url from "../url";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ logged, logUserComp }) => {
   const alertRef = useRef();
-
-  useEffect(() => {
-    console.log("from login");
-  }, [logged]);
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     email: "",
@@ -43,6 +41,7 @@ const Login = ({ logged, logUserComp }) => {
           console.log(res.data);
           if (res.data.success) {
             logUserComp();
+            navigate("/");
           }
         })
         .catch((err) => {

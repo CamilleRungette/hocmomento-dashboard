@@ -1,6 +1,9 @@
 import React from "react";
 import loginActions from "../redux/actions/login.actions";
 import { connect } from "react-redux";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
+import App from "../routes/App";
 
 const MainApp = ({ saveEventsComp, saveShowsComp, logOutComp }) => {
   // useEffect(() => {
@@ -22,23 +25,14 @@ const MainApp = ({ saveEventsComp, saveShowsComp, logOutComp }) => {
   //       console.log(err);
   //     });
   // }, []);
-  const logOut = () => {
-    logOutComp();
-  };
+
   return (
     <div className="main-app">
-      {/* <Topbar />
+      <Topbar />
       <Sidebar />
-      <App /> */}
-      <h1> main app</h1>
-      <button onClick={logOut}> log out</button>
+      <App />
     </div>
   );
 };
 
-export default connect(
-  (state) => ({}),
-  (dispatch) => ({
-    logOutComp: () => dispatch(loginActions.logOut()),
-  })
-)(MainApp);
+export default MainApp;

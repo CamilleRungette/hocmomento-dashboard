@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import MainApp from "./MainApp";
+import { useNavigate } from "react-router-dom";
 
 const Index = ({ logged }) => {
-  console.log(logged);
-  useEffect(() => {
-    console.log("hello");
-  }, [logged]);
+  const navigate = useNavigate();
 
-  return logged ? <MainApp /> : <Navigate replace to="/login" />;
+  useEffect(() => {
+    if (!logged) navigate("/login");
+  }, [logged, navigate]);
+
+  return <MainApp />;
 };
 
 export default connect((state) => ({
