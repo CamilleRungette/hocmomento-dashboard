@@ -1,0 +1,17 @@
+{
+  "printWidth": 100,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "hooks",
+    "img",
+    "^pages/(.*)$",
+    "^components/(.*)$",
+    "^stories/(.*)$",
+    "(generated/graphql|types)",
+    "constants",
+    "\\.(c|le|sc)ss$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
