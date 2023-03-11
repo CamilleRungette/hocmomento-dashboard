@@ -1,0 +1,15 @@
+@import "../global/colors.scss";
+
+.event-components{
+  width: 40vw;
+  h3{
+    font-weight: 500;
+  };
+
+  .event-form{
+    width: 90%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+  };
+};

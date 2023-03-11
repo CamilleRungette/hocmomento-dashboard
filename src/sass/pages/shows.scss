@@ -1,0 +1,50 @@
+@import "../global/colors.scss";
+
+.show-main{
+  margin-bottom: 20px !important;
+  &::before{
+    content: none !important;
+  };
+
+  h2{
+    color: $secondary;
+    font-size: 20px;
+    font-weight: 500
+  };
+  
+  .MuiAccordionSummary-root{
+    min-height: 0px !important;
+  };
+  .MuiAccordionSummary-content.Mui-expanded{
+    margin: 0px !important;
+  }
+
+  .show-buttons-div{
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    button{
+      margin: inherit;
+    }
+  };
+
+  .links-list{
+    li{
+      a{
+        color: black;
+      };
+
+      .icon{
+        font-size: 18px;
+        margin-left: 10px;
+        vertical-align: middle;
+      };
+    };
+  };
+};
+
+.edit-show-main{
+  width: 60vw;
+}

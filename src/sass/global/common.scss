@@ -1,0 +1,72 @@
+@import "./colors.scss";
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  color: $secondary;
+}
+
+.no-list-style{
+  list-style: none;
+  padding-left: 0;
+};
+
+.link{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+};
+
+.pointer{
+  cursor: pointer;
+};
+
+.inside-app {
+  width: calc(100% - 17rem);
+  margin-left: auto;
+  height: calc(100% - 5rem);
+  margin-top: 6rem;
+  transition: .5s;
+  padding-bottom: 6rem;
+
+  @media screen and (max-width: 1200px){
+    width: calc(100% - 14rem);
+    transition: .5s;
+  };
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  };
+};
+
+.card{
+  background-color: white !important;
+  width: 90% !important;
+  margin: auto !important;
+  margin-bottom: 20px!important;
+  padding: 5px 20px !important;
+  border-radius: 5px !important;
+  box-shadow: 0 0 10px 3px rgb(212, 212, 212) !important;
+  position: relative !important;
+};
+
+.card-main{
+  min-height: calc(90vh - 5rem);
+};
+
+.btn-no-style{
+  border: none;
+  background-color: transparent;
+};
+
+.full-width{
+  width: 100%;
+};
+
+.center-content{
+  text-align: center;
+};
+
+.loading-div{
+  width: 350px;
+  margin: auto;
+};

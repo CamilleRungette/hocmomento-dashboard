@@ -1,0 +1,43 @@
+@import '../global/colors.scss';
+
+.login-main{
+  width: 100vw;
+  height: 100vh;
+  background-color: $primary;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+
+  .login-card{
+    background-color: white ;
+    width: 550px ;
+    height: 300px ;
+    padding: 5px 20px ;
+    border-radius: 5px ;
+    box-shadow: 0 0 5px 3px rgb(109, 109, 109) ;
+
+    h3{
+      font-weight: 500;
+      color: $secondary;
+      font-size: 22px
+    };
+
+    .connection{
+      display: flex;
+      justify-content: space-between;
+      .gif{
+        width: 40%;
+      };
+
+      .login-form{
+        width: 50%;
+        height: 100%;
+        margin-top: 40px;
+        
+        .input{
+          margin-bottom: 10px;
+        };
+      };
+    };
+  };
+};

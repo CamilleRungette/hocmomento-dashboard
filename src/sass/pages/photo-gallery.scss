@@ -1,0 +1,104 @@
+.photo-gallery{
+  
+
+  .div-buttons{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+
+    .go-back-div{
+      width: 15%;
+      .go-back{
+        padding: 8px;
+        svg{
+          vertical-align: middle;
+          margin-bottom: 2px;
+        };
+      };
+    };
+
+    .save-div{
+      width: 40%;
+      .save{
+        padding: 8px;
+        width: 100%;
+        display: none
+      };
+    };
+
+    .upload-multiple-pictures{
+      width: 40%
+    };
+
+    @media screen and (max-width: 1600px) {
+      width: 70%;
+    };
+
+    @media screen and (max-width: 1300px) {
+      width: 90%;
+    };
+  };
+
+  .new-photos-list{
+    max-height: 150px;
+    overflow: auto;
+    width: 300px;
+  
+    li{
+      font-size: 16px !important;
+      position: relative;
+  
+      svg{
+        position: absolute;
+        right: 0;
+      };
+  
+      &:hover{
+        background-color: $background
+      };
+    };  
+  };
+
+  .photos-list{
+    display: flex;
+    flex-wrap: wrap;
+
+    li{
+      width: 300px;
+      height: 200px;
+      margin: 20px;
+      position: relative;
+      transition: .5s;
+
+      img{
+        max-height: 200px;
+        object-fit: cover;
+      };
+
+      &:hover svg{
+        opacity: 1;
+      };
+
+      svg{
+        position: absolute;
+        color: white;
+        font-size: 40px;
+        background: rgba;
+        padding: 3rem 5rem;
+        top: 15%;
+        left: 10%;
+        background-color: rgba($color: grey, $alpha: 0.5);
+        box-shadow: 0 0 50px 3px grey !important;
+        transition: .5s;
+        opacity: 0;
+
+        &:hover{
+          color: white;
+          cursor: pointer;
+        };
+      };
+    };
+  };
+};

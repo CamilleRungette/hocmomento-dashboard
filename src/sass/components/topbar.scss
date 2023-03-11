@@ -1,0 +1,75 @@
+@import '../global/colors.scss';
+
+.topbar-main{
+  height: 5rem;
+  width: 100%;
+  background-color: white !important;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 5px 5px rgb(212, 212, 212) ;
+  z-index: 3;
+
+  .logo-div{
+    width: 8rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+
+    .menu-logo{
+      width: 40%;
+      display: flex;
+      align-items: center;
+
+      svg{
+        font-size: 25px;
+        color: grey;
+        padding: .25rem;
+
+        &:hover{
+          background-color: #e4e4e4;
+        };
+      };
+    };
+
+    .hoc-momento-logo{
+      width: 60%;
+      display: flex;
+      align-items: center;
+    };
+  };
+
+  .profile{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+
+    .logout{
+      position: absolute;
+      top: 40px;
+      right: 0;
+      width: max-content;
+      padding: .5rem;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 10px 3px rgb(212, 212, 212);
+      color: $secondary;
+      z-index: 5;
+      display: none;
+
+      &:hover{
+        background-color: #F5F5F5;
+      };
+    };
+
+    .close-logout{
+      width: 100vw;
+      height: 100vh;
+      z-index: 4; 
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: none
+    };
+  };
+};

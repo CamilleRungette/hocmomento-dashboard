@@ -1,0 +1,114 @@
+@import '../global/colors.scss';
+
+.btn-div{
+  text-align: center !important;
+};
+
+.btn{
+  background-color: $primary;
+  border: 1px solid $primary;
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .5s;
+  width: auto;
+  margin: auto;
+
+  &:hover{
+    background-color: #0079bb ;
+    border: 1px solid #0079bb;
+  };
+};
+
+
+.btn-outlined{
+  background-color: white;
+  border: 1px solid $primary;
+  color: $primary;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .5s;
+  width: auto;
+  margin: auto;
+
+  &:hover{
+    background-color: $primary;
+    color: white;
+  };
+};
+
+.btn-red{
+  background-color: $red;
+  border: 1px solid $red;
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .5s;
+  width: auto;
+  margin: auto;
+
+  &:hover{
+    background-color: rgb(219, 63, 63);
+    border: 1px solid rgb(219, 63, 63);
+  };
+};
+
+.btn-red-outlined{
+  background-color: white;
+  border: 1px solid $red;
+  color: $red;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .5s;
+  width: auto;
+  margin: auto;
+
+  &:hover{
+    background-color: $red;
+    color: white;
+  };
+};
+
+.btn-grey{
+  background-color: rgb(155, 155, 155);
+  border: 1px solid rgb(155, 155, 155);
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .5s;
+  width: auto;
+  margin: auto;
+
+  &:hover{
+    background-color: rgb(196, 196, 196);
+    border: 1px solid rgb(196, 196, 196);
+  };
+};
+
+.btn-grey-outlined{
+  background-color: white;
+  border: 1px solid rgb(133, 133, 133);
+  color: rgb(133, 133, 133);
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: .5s;
+  width: auto;
+  margin: auto;
+
+  &:hover{
+    background-color: rgb(155, 155, 155);
+    color: white;
+  };
+};
