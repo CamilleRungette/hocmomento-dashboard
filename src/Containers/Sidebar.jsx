@@ -32,7 +32,7 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
     window.addEventListener("resize", updateSize);
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
-  }, [size]);
+  }, [size, hideSidebarComp, showSidebarComp, sidebarOpen]);
 
   const hideSidebar = () => {
     hideSidebarComp();
