@@ -41,7 +41,7 @@ const Login = ({ logUserComp }) => {
           console.log(res.data);
           if (res.data.success) {
             logUserComp();
-            navigate("/");
+            navigate("/dashboard");
           }
         })
         .catch((err) => {

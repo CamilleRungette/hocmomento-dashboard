@@ -32,7 +32,8 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
     window.addEventListener("resize", updateSize);
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
-  }, [size, hideSidebarComp, showSidebarComp, sidebarOpen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size]);
 
   const hideSidebar = () => {
     hideSidebarComp();
@@ -82,33 +83,31 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
       <ul className="sidebar-navigation no-list-style">
         <li onClick={checkSidebar}>
           <Link to="/dashboard" className="link">
-            {" "}
-            <MdDashboard className="sidebar-icon " /> Tableau de bord{" "}
+            <MdDashboard className="sidebar-icon " /> Tableau de bord
           </Link>
         </li>
         <li className="pointer">
           <span onClick={showList("shows")} className="open-li-span">
-            <FaTheaterMasks className="sidebar-icon" /> Spectacles{" "}
+            <FaTheaterMasks className="sidebar-icon" /> Spectacles
             <IoIosArrowDown id="icon-shows" className="show-list" />
           </span>
           <ul id="list-shows" className="no-list-style sublist">
             <li onClick={checkSidebar}>
               <Link to="/creation-spectacle" className="link">
-                {" "}
                 Créer un spectacle
-              </Link>{" "}
+              </Link>
             </li>
             <li onClick={checkSidebar}>
               <Link to="/spectacles" className="link">
                 Voir les spectacles
-              </Link>{" "}
+              </Link>
             </li>
           </ul>
         </li>
         <li className="pointer">
           <span className="open-li-span" onClick={showList("actions")}>
-            <FaTheaterMasks className="sidebar-icon" /> Actions culturelles{" "}
-            <IoIosArrowDown id="icon-actions" className="show-list" />{" "}
+            <FaTheaterMasks className="sidebar-icon" /> Actions culturelles
+            <IoIosArrowDown id="icon-actions" className="show-list" />
           </span>
           <ul id="list-actions" className="no-list-style sublist">
             <li>Créer une action culturelle</li>
@@ -117,20 +116,17 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
         </li>
         <li onClick={checkSidebar}>
           <Link to="/agenda" className="link">
-            {" "}
-            <RiCalendarEventLine className="sidebar-icon " /> Agenda{" "}
+            <RiCalendarEventLine className="sidebar-icon " /> Agenda
           </Link>
         </li>
         <li onClick={checkSidebar}>
           <Link to="/" className="link">
-            {" "}
-            <RiHandHeartLine className="sidebar-icon " /> Partenaires & Soutiens{" "}
+            <RiHandHeartLine className="sidebar-icon " /> Partenaires & Soutiens
           </Link>
         </li>
         <li onClick={checkSidebar}>
           <Link to="/" className="link">
-            {" "}
-            <AiOutlineMail className="sidebar-icon " /> Messagerie{" "}
+            <AiOutlineMail className="sidebar-icon " /> Messagerie
           </Link>
         </li>
       </ul>
