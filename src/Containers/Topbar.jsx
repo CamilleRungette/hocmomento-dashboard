@@ -4,7 +4,6 @@ import Avatar from "@mui/material/Avatar";
 import sidebarActions from "../redux/actions/sidebar.actions";
 import loginActions from "../redux/actions/login.actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 const Topbar = ({ logOutComp, showSidebarComp }) => {
   const showLogOut = () => {

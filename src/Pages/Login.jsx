@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
 import AlertMessage from "../Components/Alert/Alert";
 import axios from "axios";
@@ -7,7 +7,7 @@ import loginActions from "../redux/actions/login.actions";
 import url from "../url";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ logged, logUserComp }) => {
+const Login = ({ logUserComp }) => {
   const alertRef = useRef();
   const navigate = useNavigate();
 

@@ -1,6 +1,4 @@
 import React from "react";
-import loginActions from "../redux/actions/login.actions";
-import { connect } from "react-redux";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import App from "../routes/App";
