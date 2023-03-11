@@ -1,69 +1,35 @@
 @import "../global/colors.scss";
 
-.input-form{
+.input-form {
   margin-bottom: 10px !important;
-};
+}
 
-.dates{
-  margin-bottom: 10px;
-
-  .date-picker-div{
-    width: 100%;
-    display: flex;
-    margin-bottom: 5px;
-    
-    div{
-      width: 85%;
-      font-size: 14px !important;
-    };
-
-    .remove-icon{
-      font-size: 22px;
-      vertical-align: middle;
-      margin-top: 10px;
-      width: 16%
-    };
-  };
-
-  .adress-line{
-    .line{
-      width: 48%;
-
-      &:not(:first-child){
-        margin-left: 4%
-      }
-    };
-  };
-
-};
-
-.add-date{
+.add-date {
   width: 100%;
   font-size: 14px;
-  border: 1px dashed $primary ;
+  border: 1px dashed $primary;
   background-color: white;
   color: rgb(71, 71, 71);
   font-weight: 500;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   border-radius: 5px;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 
-  &:hover{
+  &:hover {
     color: $primary;
-    transition-duration: .5s;
-  };
+    transition-duration: 0.5s;
+  }
 
-  svg{
+  svg {
     vertical-align: middle;
-  };
-};
+  }
+}
 
-.MuiInputBase-formControl{
+.MuiInputBase-formControl {
   height: 40px !important;
-};
+}
 
-
-.upload-picture{
+.upload-picture {
   position: relative;
   padding-top: 3rem;
   margin-bottom: 4rem;
@@ -75,9 +41,9 @@
     overflow: hidden;
     position: absolute;
     z-index: -1;
-  };
+  }
 
-  .label{
+  .label {
     padding: 2.5rem 2rem;
     border: 1px rgb(214, 214, 214) dashed;
     background-color: rgb(243, 243, 243);
@@ -85,15 +51,15 @@
     cursor: pointer;
     position: relative;
 
-    .plus-icon{
+    .plus-icon {
       position: absolute;
       top: 1.5rem;
       left: 3rem;
-    };
-  };
-};
+    }
+  }
+}
 
-.upload-multiple-pictures{
+.upload-multiple-pictures {
   position: relative;
 
   .inputfile {
@@ -103,10 +69,10 @@
     overflow: hidden;
     position: absolute;
     z-index: -1;
-  };
+  }
 
-  .label{
-    padding: .5rem 0rem;
+  .label {
+    padding: 0.5rem 0rem;
     display: inline-block;
     text-align: center;
     width: 100%;
@@ -116,124 +82,120 @@
     cursor: pointer;
     position: relative;
     font-size: 14px;
-    transition: .5s;
+    transition: 0.5s;
 
-    &:hover{
+    &:hover {
       color: $dark-grey;
     }
 
-    .plus-icon{
+    .plus-icon {
       vertical-align: middle;
-      margin-right: 5px
-    };
-  };
-};
+      margin-right: 5px;
+    }
+  }
+}
 
-.picture-names-list{
+.picture-names-list {
   height: 150px;
   overflow: auto;
 
-  li{
+  li {
     font-size: 14px !important;
     position: relative;
 
-    svg{
+    svg {
       position: absolute;
       right: 0;
-    };
+    }
 
-    &:hover{
-      background-color: $background
-    };
-  };
-};
+    &:hover {
+      background-color: $background;
+    }
+  }
+}
 
-
-.picture-link{
+.picture-link {
   font-style: italic;
   color: $dark-grey;
-};
+}
 
-.delete-picture{
+.delete-picture {
   vertical-align: middle;
   font-size: 20px;
   margin-left: 20px;
-  transition: .5s;
+  transition: 0.5s;
 
-  &:hover{
+  &:hover {
     color: $dark-grey;
-  };
-};
+  }
+}
 
-
-.show-form{
+.show-form {
   width: 90%;
   margin: auto;
 
-  .editor-div{
+  .editor-div {
     border: 1px rgb(196, 196, 196) solid;
     border-radius: 5px;
     min-height: 300px;
     max-height: 60vh;
     overflow: auto;
-  };
+  }
 
-  .rdw-option-wrapper{
+  .rdw-option-wrapper {
     min-width: 16px !important;
-  };
+  }
 
-  .dates-and-picture{
+  .dates-and-picture {
     display: flex;
     justify-content: space-between;
 
-    .dates-div{
+    .dates-div {
       width: 58%;
-    };
+    }
 
-    .pictures-div{
+    .pictures-div {
       width: 38%;
       padding-left: 1rem;
-    };
-  };
+    }
+  }
 
-  .div-links{
+  .div-links {
     padding-bottom: 10px !important;
   }
-  .links{
+  .links {
     display: flex;
     justify-content: space-between;
 
-    #name{
+    #name {
       width: 39%;
-    };
+    }
 
-    #link{
+    #link {
       width: 39%;
-    };
+    }
 
-    #type{
+    #type {
       width: 16%;
-    };
-    .remove-icon{
+    }
+    .remove-icon {
       font-size: 22px;
       vertical-align: middle;
       margin-top: 10px;
       width: 4%;
-    };
-  };
+    }
+  }
 
-  .btn-div{
+  .btn-div {
     padding: 1rem 0;
-  };
-};
 
-.loading-div{
-  button {
-    display: flex;
-    
-    .loading-div{
+    .loading-div {
       width: 20px;
       margin-right: 5px;
-    };
-  };
-};
+
+      button {
+        display: flex;
+      }
+    }
+  }
+}
