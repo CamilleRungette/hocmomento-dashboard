@@ -14,13 +14,6 @@ const EditShow = ({ showData }) => {
     type: "pdf",
   };
 
-  const initialShow = {
-    title: "",
-    description: "",
-    gallery: [],
-    links: [initLink],
-  };
-
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(showData);
 
