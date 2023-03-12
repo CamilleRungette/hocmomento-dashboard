@@ -6,8 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { BiMinusCircle } from "react-icons/bi";
 import { IoIosAdd } from "react-icons/io";
-import SimpleEditor from "../Editor/EditorEdit";
-import url from "../../url";
+import SimpleEditor from "../Editor/Editor";
 
 const EditShow = ({ showDatas }) => {
   const initLink = {
