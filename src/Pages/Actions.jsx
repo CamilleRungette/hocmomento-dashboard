@@ -4,8 +4,8 @@ import { BsDownload } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 import Alert from "../Components/Alert/Alert";
-import EditShow from "../Components/Shows/EditShow";
-import BasicModal from "../Components/Modal/BasicModal";
+// import EditShow from "../Components/Shows/EditShow";
+// import BasicModal from "../Components/Modal/BasicModal";
 import ConfirmModal from "../Components/Modal/ConfirmModal";
 
 import Accordion from "@mui/material/Accordion";
@@ -60,9 +60,9 @@ const Actions = () => {
     modalRef.current.showModal();
   };
 
-  const closeModal = () => {
-    modalRef.current.closeModal();
-  };
+  // const closeModal = () => {
+  //   modalRef.current.closeModal();
+  // };
 
   const showAlert = (type, message) => {
     setAlert({ type, message });
