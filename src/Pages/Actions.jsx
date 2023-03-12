@@ -113,7 +113,7 @@ const Actions = () => {
                 <button className="btn" onClick={() => showModal(action)}>
                   Modifier
                 </button>
-                <Link to={`/spectacle/${action._id}/gallerie`}>
+                <Link to={`/action-culturelle/${action._id}/gallerie`}>
                   <button className="btn-outlined">Voir la gallerie</button>
                 </Link>
                 <button className="btn-red-outlined" onClick={() => showDialog(action)}>

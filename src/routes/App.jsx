@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import ActionGallery from "../Pages/ActionGallery";
 import Actions from "../Pages/Actions";
 import CreateAction from "../Pages/CreateAction";
 import CreateShow from "../Pages/CreateShow";
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/creation-spectacle" element={<CreateShow />} />
         <Route path="/creation-action" element={<CreateAction />} />
         <Route path="/spectacle/:id/gallerie" element={<ShowGallery />} />
+        <Route path="/action-culturelle/:id/gallerie" element={<ActionGallery />} />
       </Routes>
     </div>
   );
