@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Alert from "../Components/Alert/Alert";
 
-import { Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { IoIosAdd, IoIosArrowBack } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
@@ -78,7 +78,7 @@ const ShowGallery = () => {
     let formDatas = [...pictures];
     let picturesNamesArray = [...pictureNames];
 
-    Object.values(e.target.files).map((value) => {
+    Object.values(e.target.files).forEach((value) => {
       const formData = new FormData();
       formData.append("file", value);
       formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
