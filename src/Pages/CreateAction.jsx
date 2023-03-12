@@ -23,11 +23,13 @@ const CreateAction = () => {
     type: "pdf",
   };
 
-  const initialShow = {
-    title: "",
+  const initialAction = {
+    city: "",
     description: "",
     gallery: [],
     links: [initLink],
+    place: "",
+    title: "",
   };
 
   const initLinks = [Math.floor(Math.random() * 1000000)];
@@ -42,14 +44,14 @@ const CreateAction = () => {
   const [loading, setLoading] = useState(false);
   const [pictures, setPictures] = useState([]);
   const [pictureNames, setPictureNames] = useState([]);
-  const [show, setShow] = useState(initialShow);
+  const [action, setAction] = useState(initialAction);
 
   const handleState = (prop) => (e) => {
-    setShow({ ...show, [prop]: e.target.value });
+    setAction({ ...action, [prop]: e.target.value });
   };
 
   const handleItem = (prop) => (e) => {
-    let linksState = [...show.links];
+    let linksState = [...action.links];
 
     if (!linksState[prop.i]) {
       linksState[prop.i] = initLink;
@@ -57,31 +59,31 @@ const CreateAction = () => {
 
     linksState[prop.i][prop.type] = e.target.value;
 
-    setShow({ ...show, links: linksState });
+    setAction({ ...action, links: linksState });
   };
 
   const addItem = (e, type) => {
     e.preventDefault();
     e.stopPropagation();
-    let showCopy = { ...show };
+    let actionCopy = { ...action };
 
     setLinks([...links, Math.floor(Math.random() * 1000000)]);
-    showCopy.links.push(initLink);
+    actionCopy.links.push(initLink);
 
-    setShow(showCopy);
+    setAction(actionCopy);
   };
 
   const removeItem = (id, index, type) => {
-    let showArray = { ...show };
+    let showArray = { ...action };
 
     let linksArray = [...links];
     linksArray = linksArray.filter((link) => link !== id);
     setLinks(linksArray);
 
     showArray.links.splice(index, 1);
-    setShow({ ...show, links: showArray.links });
+    setAction({ ...action, links: showArray.links });
 
-    setShow(showArray);
+    setAction(showArray);
   };
 
   const fileSelectedHandler = (e) => {
@@ -119,15 +121,15 @@ const CreateAction = () => {
   };
 
   const handleDescription = (html) => {
-    setShow({ ...show, description: html });
+    setAction({ ...action, description: html });
   };
 
-  const saveShow = async (e) => {
+  const saveAction = async (e) => {
     e.preventDefault();
 
-    let finalShow = { ...show };
+    let finalAction = { ...action };
 
-    if (!finalShow.title) {
+    if (!finalAction.title) {
       showAlert("warning", 'Les champs "Titre" et "description" sont obligatoires');
     } else {
       setLoading(true);
@@ -137,22 +139,22 @@ const CreateAction = () => {
       });
 
       if (
-        finalShow.links.length === 1 &&
-        JSON.stringify(finalShow.links[0]) === JSON.stringify(initLink)
+        finalAction.links.length === 1 &&
+        JSON.stringify(finalAction.links[0]) === JSON.stringify(initLink)
       )
-        finalShow.links = [];
+        finalAction.links = [];
       if (pictures.length) {
         Promise.all(promises)
           .then((values) => {
-            finalShow.gallery = values;
+            finalAction.gallery = values;
             axios
-              .post(`${url}/shows/create-show`, finalShow)
+              .post(`${url}/actions/create-action`, finalAction)
               .then(() => {
-                showAlert("success", "Le spectacle a bien été créé");
+                showAlert("success", "L'action culturelle a bien été créée");
                 setTimeout(
                   function () {
                     setLoading(false);
-                    navigate("/spectacles");
+                    navigate("/actions");
                   },
                   [2000]
                 );
@@ -174,13 +176,13 @@ const CreateAction = () => {
           });
       } else {
         axios
-          .post(`${url}/shows/create-show`, finalShow)
+          .post(`${url}/actions/create-action`, finalAction)
           .then(() => {
-            showAlert("success", "Le spectacle a bien été créé");
+            showAlert("success", "L'action culturelle a bien été créée");
             setTimeout(
               function () {
                 setLoading(false);
-                navigate("/spectacles");
+                navigate("/actions");
               },
               [2000]
             );
@@ -201,17 +203,34 @@ const CreateAction = () => {
       <div className="card card-main create-show-main">
         <h3>Créer une action culturelle</h3>
 
-        <form className="show-form" onSubmit={saveShow}>
+        <form className="show-form" onSubmit={saveAction}>
+          <TextField
+            id="place"
+            label="Lieu"
+            value={action.place}
+            onChange={handleState("place")}
+            className="input-form full-width"
+            size="small"
+          />
+          <TextField
+            id="city"
+            label="Ville"
+            value={action.city}
+            onChange={handleState("city")}
+            className="input-form full-width"
+            size="small"
+          />
           <TextField
             id="title"
             label="Titre"
-            value={show.title}
+            value={action.title}
             onChange={handleState("title")}
             className="input-form full-width"
             size="small"
           />
 
           <div className="input-form">
+            <h4>Description</h4>
             <SimpleEditor handleDescription={handleDescription} text="" />
           </div>
           <div className="dates-and-picture">
@@ -252,7 +271,7 @@ const CreateAction = () => {
                     label="Nom"
                     className="input-form full-width"
                     size="small"
-                    value={show.links[i].name}
+                    value={action.links[i].name}
                     onChange={handleItem({ type: "name", i, item: "link" })}
                   />
                 </div>
@@ -262,7 +281,7 @@ const CreateAction = () => {
                     label="Lien"
                     className="input-form full-width"
                     size="small"
-                    value={show.links[i].link}
+                    value={action.links[i].link}
                     onChange={handleItem({ type: "link", i, item: "link" })}
                   />
                 </div>
@@ -272,7 +291,7 @@ const CreateAction = () => {
                     <Select
                       id="demo-simple-select"
                       name="link"
-                      value={show.links[i].type}
+                      value={action.links[i].type}
                       onChange={handleItem({ type: "type", i, item: "link" })}
                     >
                       <MenuItem value={"pdf"}>Pdf</MenuItem>

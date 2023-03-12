@@ -110,7 +110,11 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
             <IoIosArrowDown id="icon-actions" className="show-list" />
           </span>
           <ul id="list-actions" className="no-list-style sublist">
-            <li>Créer une action culturelle</li>
+            <li>
+              <Link to="/creation-action" className="link">
+                Créer une action culturelle
+              </Link>
+            </li>
             <li>
               <Link to="/actions" className="link">
                 Voir les actions culturelles
