@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { MdDashboard } from "react-icons/md";
-import { RiCalendarEventLine, RiHandHeartLine } from "react-icons/ri";
+import { RiCalendarEventLine } from "react-icons/ri";
 import { AiOutlineMail, AiOutlineMenuFold } from "react-icons/ai";
 import { FaTheaterMasks } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
