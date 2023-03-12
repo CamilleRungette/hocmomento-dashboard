@@ -72,6 +72,7 @@ const EditShow = ({ showDatas, showAlert, closeModal, getShows }) => {
         showAlert("success", "Le spectacle a bien été modifié");
         getShows();
         closeModal();
+        setLoading(false);
       })
       .catch((e) => {
         console.log(e);
@@ -79,6 +80,7 @@ const EditShow = ({ showDatas, showAlert, closeModal, getShows }) => {
           "error",
           "Erreur lors de la modification du spectacle, veuillez rééssayer plus tard."
         );
+        setLoading(false);
       });
   };
 
