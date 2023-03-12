@@ -4,6 +4,7 @@ import Actions from "../Pages/Actions";
 import CreateAction from "../Pages/CreateAction";
 import CreateShow from "../Pages/CreateShow";
 import Dashboard from "../Pages/Dashboard";
+import ShowGallery from "../Pages/ShowGallery";
 import Shows from "../Pages/Shows";
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="/spectacles" element={<Shows />} />
         <Route path="/creation-spectacle" element={<CreateShow />} />
         <Route path="/creation-action" element={<CreateAction />} />
-        {/* <Route path="/spectacle/:id/gallerie" element={<ShowGallery />} />  */}
+        <Route path="/spectacle/:id/gallerie" element={<ShowGallery />} />
       </Routes>
     </div>
   );
