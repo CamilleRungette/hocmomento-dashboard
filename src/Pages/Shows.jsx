@@ -175,7 +175,14 @@ const Shows = () => {
       )}
       <BasicModal
         ref={modalRef}
-        content={<EditShow showAlert={showAlert} showDatas={show} closeModal={closeModal} />}
+        content={
+          <EditShow
+            showDatas={show}
+            showAlert={showAlert}
+            closeModal={closeModal}
+            getShows={getShows}
+          />
+        }
       />
       <Alert ref={alertRef} type={alert.type} message={alert.message} />
       <ConfirmModal

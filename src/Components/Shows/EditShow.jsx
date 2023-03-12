@@ -7,8 +7,10 @@ import Select from "@mui/material/Select";
 import { BiMinusCircle } from "react-icons/bi";
 import { IoIosAdd } from "react-icons/io";
 import SimpleEditor from "../Editor/Editor";
+import axios from "axios";
+import url from "../../url";
 
-const EditShow = ({ showDatas }) => {
+const EditShow = ({ showDatas, showAlert, closeModal, getShows }) => {
   const initLink = {
     name: "",
     link: "",
@@ -21,6 +23,7 @@ const EditShow = ({ showDatas }) => {
 
   useEffect(() => {
     setDescriptionCopy(showDatas.description);
+    setShow(showDatas);
   }, [showDatas]);
 
   const handleState = (prop) => (e) => {
@@ -61,9 +64,22 @@ const EditShow = ({ showDatas }) => {
 
   const saveShow = (e) => {
     e.preventDefault();
-
-    console.log("save");
     setLoading(true);
+
+    axios
+      .patch(`${url}/shows/update-show/${show._id}`, show)
+      .then(() => {
+        showAlert("success", "Le spectacle a bien été modifié");
+        getShows();
+        closeModal();
+      })
+      .catch((e) => {
+        console.log(e);
+        showAlert(
+          "error",
+          "Erreur lors de la modification du spectacle, veuillez rééssayer plus tard."
+        );
+      });
   };
 
   return (
