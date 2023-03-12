@@ -30,6 +30,7 @@ export default class CustomToolbarEditor extends Component {
   };
 
   onChange = (editorState) => {
+    console.log(editorState.getCurrentContent());
     this.props.handleDescription(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     this.setState({
       editorState,

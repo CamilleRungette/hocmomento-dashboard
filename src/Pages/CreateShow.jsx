@@ -14,7 +14,7 @@ import { BiMinusCircle } from "react-icons/bi";
 import { VscClose } from "react-icons/vsc";
 
 import url from "../url";
-import SimpleEditor from "../Components/Editor/Editor";
+import SimpleEditor from "../Components/Editor/EditorCreate";
 
 const CreateShow = () => {
   const initLink = {

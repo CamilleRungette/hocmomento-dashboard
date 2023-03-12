@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { BiMinusCircle } from "react-icons/bi";
 import { IoIosAdd } from "react-icons/io";
-import SimpleEditor from "../../Components/Editor/Editor";
+import SimpleEditor from "../Editor/EditorEdit";
 import url from "../../url";
 
 const EditShow = ({ showDatas }) => {
