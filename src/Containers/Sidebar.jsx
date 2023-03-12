@@ -111,7 +111,11 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
           </span>
           <ul id="list-actions" className="no-list-style sublist">
             <li>Créer une action culturelle</li>
-            <li>Voir les actions culturelles </li>
+            <li>
+              <Link to="/actions" className="link">
+                Voir les actions culturelles
+              </Link>
+            </li>
           </ul>
         </li>
         <li onClick={checkSidebar}>

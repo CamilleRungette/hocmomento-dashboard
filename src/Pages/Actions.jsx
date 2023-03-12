@@ -15,35 +15,39 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import url from "../url";
 
-const Shows = () => {
+const Actions = () => {
   const initLink = {
     name: "",
     link: "",
     type: "pdf",
   };
 
-  const initialShow = {
-    title: "",
+  const initialAction = {
+    city: "",
     description: "",
     gallery: [],
     links: [initLink],
+    place: "",
+    title: "",
   };
 
   const modalRef = useRef();
   const alertRef = useRef();
   const confirmRef = useRef();
-  const [show, setShow] = useState(initialShow);
-  const [shows, setShows] = useState([]);
+  const [action, setAction] = useState(initialAction);
+  const [actions, setActions] = useState([]);
   const [alert, setAlert] = useState({
     type: "info",
     message: "",
   });
 
+  console.log(actions);
+
   useMemo(() => {
     axios
-      .get(`${url}/shows/shows`)
+      .get(`${url}/actions/actions`)
       .then((res) => {
-        setShows(res.data);
+        setActions(res.data);
       })
       .catch((e) => {
         showAlert("error", "Erreur lors du chargement des spectacles");
@@ -52,7 +56,7 @@ const Shows = () => {
   }, []);
 
   const showModal = (data) => {
-    setShow(data);
+    setAction(data);
     modalRef.current.showModal();
   };
 
@@ -66,13 +70,13 @@ const Shows = () => {
   };
 
   const showDialog = (data) => {
-    setShow(data);
+    setAction(data);
     confirmRef.current.showModal();
   };
 
   const deleteShow = () => {
     axios
-      .post(`${url}/dashboard/delete-show`, { id: show._id })
+      .post(`${url}/dashboard/delete-show`, { id: action._id })
       .then((res) => {
         if (res.data === "success") {
           showAlert("success", "Le spectacle a bien été supprimé");
@@ -90,49 +94,41 @@ const Shows = () => {
 
   return (
     <div className="inside-app">
-      {shows.length ? (
-        shows.map((show) => (
-          <Accordion key={show._id} className="card show-main">
+      {actions.length ? (
+        actions.map((action) => (
+          <Accordion key={action._id} className="card show-main">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <h2>{show.title} </h2>
+              <h2>
+                {action.place}
+                {action.title && ` - ${action.title}`}
+              </h2>
             </AccordionSummary>
             <AccordionDetails>
               <div className="show-buttons-div">
-                <button className="btn" onClick={() => showModal(show)}>
+                <button className="btn" onClick={() => showModal(action)}>
                   Modifier
                 </button>
-                <Link to={`/spectacle/${show._id}/gallerie`}>
+                <Link to={`/spectacle/${action._id}/gallerie`}>
                   <button className="btn-outlined">Voir la gallerie</button>
                 </Link>
-                <button className="btn-red-outlined" onClick={() => showDialog(show)}>
+                <button className="btn-red-outlined" onClick={() => showDialog(action)}>
                   Supprimer
                 </button>
               </div>
+              <p>{action.city}</p>
               <p
                 className="show-description"
-                dangerouslySetInnerHTML={{ __html: show.description }}
+                dangerouslySetInnerHTML={{ __html: action.description }}
               />
-              {show.dates.length ? (
-                <ul className="no-list-style">
-                  <h4> Dates </h4>
-                  {show.dates.map((date, i) => (
-                    <li key={`date${i}`}>
-                      <p>{date}</p>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <></>
-              )}
 
-              {show.links.length ? (
+              {action.links.length ? (
                 <ul className="no-list-style links-list">
                   <h4>Liens</h4>
-                  {show.links.map((link) =>
+                  {action.links.map((link) =>
                     link.type === "pdf" ? (
                       <li key={Math.floor(Math.random() * 1000000)}>
                         <a
@@ -170,10 +166,10 @@ const Shows = () => {
           <img src="/images/loading.gif" alt="events-loader" />
         </div>
       )}
-      <BasicModal
+      {/* <BasicModal
         ref={modalRef}
-        content={<EditShow showAlert={showAlert} showData={show} closeModal={closeModal} />}
-      />
+        content={<EditShow showAlert={showAlert} showData={action} closeModal={closeModal} />}
+      /> */}
       <Alert ref={alertRef} type={alert.type} message={alert.message} />
       <ConfirmModal
         ref={confirmRef}
@@ -185,4 +181,4 @@ const Shows = () => {
   );
 };
 
-export default Shows;
+export default Actions;
