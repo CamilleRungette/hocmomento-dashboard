@@ -6,6 +6,7 @@ import draftToHtml from "draftjs-to-html";
 import Editor, { createEditorStateWithText } from "@draft-js-plugins/editor";
 
 import createToolbarPlugin, { Separator } from "@draft-js-plugins/static-toolbar";
+
 import {
   ItalicButton,
   BoldButton,
