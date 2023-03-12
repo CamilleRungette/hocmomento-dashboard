@@ -41,9 +41,7 @@ const Actions = () => {
     message: "",
   });
 
-  console.log(actions);
-
-  useMemo(() => {
+  const getActions = () => {
     axios
       .get(`${url}/actions/actions`)
       .then((res) => {
@@ -53,6 +51,11 @@ const Actions = () => {
         showAlert("error", "Erreur lors du chargement des spectacles");
         console.log(e);
       });
+  };
+
+  useMemo(() => {
+    getActions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const showModal = (data) => {
@@ -74,21 +77,19 @@ const Actions = () => {
     confirmRef.current.showModal();
   };
 
-  const deleteShow = () => {
+  const deleteAction = () => {
     axios
-      .post(`${url}/dashboard/delete-show`, { id: action._id })
-      .then((res) => {
-        if (res.data === "success") {
-          showAlert("success", "Le spectacle a bien été supprimé");
-        } else {
-          showAlert(
-            "error",
-            "Erreur lors de la suppression du spectacle, veuillez rééssayer plus tard."
-          );
-        }
+      .delete(`${url}/actions/delete-action/${action._id}`)
+      .then(() => {
+        showAlert("success", "Le spectacle a bien été supprimé");
+        getActions();
       })
       .catch((error) => {
         console.log(error);
+        showAlert(
+          "error",
+          "Erreur lors de la suppression du spectacle, veuillez rééssayer plus tard."
+        );
       });
   };
 
@@ -175,7 +176,7 @@ const Actions = () => {
         ref={confirmRef}
         content={<div>Êtes-vous sûr de vouloir supprimer ce spectacle ?</div>}
         button={true}
-        confirmParent={deleteShow}
+        confirmParent={deleteAction}
       />
     </div>
   );

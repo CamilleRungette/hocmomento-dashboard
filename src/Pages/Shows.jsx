@@ -39,7 +39,7 @@ const Shows = () => {
     message: "",
   });
 
-  useMemo(() => {
+  const getShows = () => {
     axios
       .get(`${url}/shows/shows`)
       .then((res) => {
@@ -49,6 +49,11 @@ const Shows = () => {
         showAlert("error", "Erreur lors du chargement des spectacles");
         console.log(e);
       });
+  };
+
+  useMemo(() => {
+    getShows();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const showModal = (data) => {
@@ -72,19 +77,17 @@ const Shows = () => {
 
   const deleteShow = () => {
     axios
-      .post(`${url}/dashboard/delete-show`, { id: show._id })
-      .then((res) => {
-        if (res.data === "success") {
-          showAlert("success", "Le spectacle a bien été supprimé");
-        } else {
-          showAlert(
-            "error",
-            "Erreur lors de la suppression du spectacle, veuillez rééssayer plus tard."
-          );
-        }
+      .delete(`${url}/shows/delete-show/${show._id}`)
+      .then(() => {
+        showAlert("success", "Le spectacle a bien été supprimé");
+        getShows();
       })
       .catch((error) => {
         console.log(error);
+        showAlert(
+          "error",
+          "Erreur lors de la suppression du spectacle, veuillez rééssayer plus tard."
+        );
       });
   };
 
