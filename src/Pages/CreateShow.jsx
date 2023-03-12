@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Alert from "../Components/Alert/Alert";
 
 import TextField from "@mui/material/TextField";
@@ -15,6 +14,7 @@ import { BiMinusCircle } from "react-icons/bi";
 import { VscClose } from "react-icons/vsc";
 
 import url from "../url";
+import SimpleEditor from "../Components/Editor/Editor";
 
 const CreateShow = () => {
   const initLink = {
@@ -34,15 +34,15 @@ const CreateShow = () => {
 
   const alertRef = useRef();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(initialShow);
-  const [pictures, setPictures] = useState([]);
-  const [pictureNames, setPictureNames] = useState([]);
-  const [links, setLinks] = useState(initLinks);
   const [alert, setAlert] = useState({
     type: "info",
     message: "",
   });
+  const [links, setLinks] = useState(initLinks);
+  const [loading, setLoading] = useState(false);
+  const [pictures, setPictures] = useState([]);
+  const [pictureNames, setPictureNames] = useState([]);
+  const [show, setShow] = useState(initialShow);
 
   const handleState = (prop) => (e) => {
     setShow({ ...show, [prop]: e.target.value });
@@ -116,6 +116,10 @@ const CreateShow = () => {
   const showAlert = (type, message) => {
     setAlert({ type, message });
     alertRef.current.showAlert();
+  };
+
+  const handleDescription = (html) => {
+    setShow({ ...show, description: html });
   };
 
   const saveShow = async (e) => {
@@ -207,6 +211,9 @@ const CreateShow = () => {
             size="small"
           />
 
+          <div className="input-form">
+            <SimpleEditor handleDescription={handleDescription} text="" />
+          </div>
           <div className="dates-and-picture">
             <div className="pictures-div">
               <h4>Télécharger des photos</h4>
@@ -235,7 +242,6 @@ const CreateShow = () => {
               </ul>
             </div>
           </div>
-
           <div className="div-links">
             <h4>Liens</h4>
             {links.map((link, i) => (
