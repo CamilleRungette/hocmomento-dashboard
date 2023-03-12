@@ -127,11 +127,7 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
             <RiCalendarEventLine className="sidebar-icon " /> Agenda
           </Link>
         </li>
-        <li onClick={checkSidebar}>
-          <Link to="/" className="link">
-            <RiHandHeartLine className="sidebar-icon " /> Partenaires & Soutiens
-          </Link>
-        </li>
+
         <li onClick={checkSidebar}>
           <Link to="/" className="link">
             <AiOutlineMail className="sidebar-icon " /> Messagerie

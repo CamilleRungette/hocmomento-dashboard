@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -6,8 +6,10 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { BiMinusCircle } from "react-icons/bi";
 import { IoIosAdd } from "react-icons/io";
+import SimpleEditor from "../../Components/Editor/Editor";
+import url from "../../url";
 
-const EditShow = ({ showData }) => {
+const EditShow = ({ showDatas }) => {
   const initLink = {
     name: "",
     link: "",
@@ -15,7 +17,12 @@ const EditShow = ({ showData }) => {
   };
 
   const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(showData);
+  const [descriptionCopy, setDescriptionCopy] = useState(showDatas.description);
+  const [show, setShow] = useState(showDatas);
+
+  useEffect(() => {
+    setDescriptionCopy(showDatas.description);
+  }, [showDatas]);
 
   const handleState = (prop) => (e) => {
     setShow({ ...show, [prop]: e.target.value });
@@ -36,17 +43,21 @@ const EditShow = ({ showData }) => {
   const addItem = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    let showCopy = { ...showData };
+    let showCopy = { ...show };
 
     showCopy.links.push(initLink);
     setShow({ ...show, links: showCopy.links });
   };
 
   const removeItem = (index) => {
-    let showCopy = { ...showData };
+    let showCopy = { ...show };
 
     showCopy.links.splice(index, 1);
     setShow({ ...show, links: showCopy.links });
+  };
+
+  const handleDescription = (html) => {
+    setShow({ ...show, description: html });
   };
 
   const saveShow = (e) => {
@@ -70,9 +81,13 @@ const EditShow = ({ showData }) => {
           size="small"
         />
 
+        <div className="input-form">
+          <SimpleEditor handleDescription={handleDescription} text={descriptionCopy} />
+        </div>
+
         <div className="div-links">
           <h4>Liens</h4>
-          {showData.links.map((link, i) => (
+          {show.links.map((link, i) => (
             <div key={`link${i}`} className="links">
               <div id="name">
                 <TextField

@@ -28,7 +28,6 @@ export default class CustomToolbarEditor extends Component {
   state = {
     editorState: createEditorStateWithText(this.props.text),
   };
-
   onChange = (editorState) => {
     this.props.handleDescription(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     this.setState({
@@ -39,6 +38,13 @@ export default class CustomToolbarEditor extends Component {
   componentDidMount() {
     // fixing issue with SSR https://github.com/facebook/draft-js/issues/2332#issuecomment-761573306
     // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      editorState: createEditorStateWithText(this.props.text),
+    });
+  }
+
+  componentWillReceiveProps() {
+    console.log(this.props.text);
     this.setState({
       editorState: createEditorStateWithText(this.props.text),
     });
