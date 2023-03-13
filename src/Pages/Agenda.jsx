@@ -6,10 +6,9 @@ import { IoIosMore, IoIosAdd } from "react-icons/io";
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineEdit } from "react-icons/ai";
 import axios from "axios";
-
-// import BasicModal from "../Components/Modal/BasicModal";
+import BasicModal from "../Components/Modal/BasicModal";
 import ConfirmModal from "../Components/Modal/ConfirmModal";
-// import CreateEvent from "../Components/Agenda/CreateEvent";
+import CreateEvent from "../Components/Agenda/CreateEvent";
 // import EditEvent from "../Components/Agenda/EditEvent";
 import AlertMessage from "../Components/Alert/Alert";
 
@@ -35,7 +34,7 @@ const Agenda = () => {
   const alertRef = useRef();
   const confirmRef = useRef();
   const [thisEvent, setEvent] = useState({});
-  // const [modalContent, setModalContent] = useState(<CreateEvent />);
+  const [modalContent, setModalContent] = useState(<CreateEvent />);
   const [eventsYear, setEventsYear] = useState([]);
   const [alert, setAlert] = useState({
     type: "info",
@@ -81,9 +80,9 @@ const Agenda = () => {
     modalRef.current.showModal();
   };
 
-  // const closeModal = () => {
-  //   modalRef.current.closeModal();
-  // };
+  const closeModal = () => {
+    modalRef.current.closeModal();
+  };
 
   const showAlert = (type, message) => {
     setAlert({ type, message });
@@ -95,21 +94,15 @@ const Agenda = () => {
       setEvent(thisEvent);
       // setModalContent(
       //   <EditEvent
-      //     key={Math.floor(Math.random() * 1000000)}
       //     showAlert={showAlert}
       //     closeModal={closeModal}
       //     eventInfos={thisEvent}
       //   />
       // );
     } else if (type === "create") {
+      console.log("create");
       setEvent(initialEvent);
-      // setModalContent(
-      //   <CreateEvent
-      //     key={Math.floor(Math.random() * 1000000)}
-      //     showAlert={showAlert}
-      //     closeModal={closeModal}
-      //   />
-      // );
+      setModalContent(<CreateEvent showAlert={showAlert} closeModal={closeModal} />);
     }
     showModal();
   };
@@ -258,7 +251,7 @@ const Agenda = () => {
         button={true}
         confirmParent={deleteEvent}
       />
-      {/* <BasicModal ref={modalRef} content={modalContent} /> */}
+      <BasicModal ref={modalRef} content={modalContent} />
     </div>
   );
 };

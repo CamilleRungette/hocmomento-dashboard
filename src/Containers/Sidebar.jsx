@@ -129,7 +129,7 @@ const Sidebar = ({ sidebarOpen, hideSidebarComp, showSidebarComp }) => {
         </li>
 
         <li onClick={checkSidebar}>
-          <Link to="/" className="link">
+          <Link to="/messagerie" className="link">
             <AiOutlineMail className="sidebar-icon " /> Messagerie
           </Link>
         </li>

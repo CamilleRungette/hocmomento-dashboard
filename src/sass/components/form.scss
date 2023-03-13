@@ -3,6 +3,37 @@
 .input-form {
   margin-bottom: 10px !important;
 }
+.dates {
+  margin-bottom: 10px;
+
+  .date-picker-div {
+    width: 100%;
+    display: flex;
+    margin-bottom: 5px;
+
+    div {
+      width: 85%;
+      font-size: 14px !important;
+    }
+
+    .remove-icon {
+      font-size: 22px;
+      vertical-align: middle;
+      margin-top: 10px;
+      width: 16%;
+    }
+  }
+
+  .adress-line {
+    .line {
+      width: 48%;
+
+      &:not(:first-child) {
+        margin-left: 4%;
+      }
+    }
+  }
+}
 
 .add-date {
   width: 100%;
@@ -22,10 +53,6 @@
   svg {
     vertical-align: middle;
   }
-}
-
-.MuiInputBase-formControl {
-  height: 40px !important;
 }
 
 .upload-picture {
