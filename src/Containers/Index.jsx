@@ -8,7 +8,6 @@ const Index = ({ logged }) => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location);
     if (!logged) navigate("/login");
     else if (location.pathname === "/") navigate("/dashboard");
   }, [logged, navigate, location]);

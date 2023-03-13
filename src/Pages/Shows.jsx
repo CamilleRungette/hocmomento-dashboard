@@ -14,6 +14,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import url from "../url";
+import { sortBy } from "lodash";
 
 const Shows = () => {
   const initLink = {
@@ -43,8 +44,8 @@ const Shows = () => {
     axios
       .get(`${url}/shows/shows`)
       .then((res) => {
-        console.log(res.data);
-        setShows(res.data);
+        const result = sortBy(res.data, "createdAt");
+        setShows(result.reverse());
       })
       .catch((e) => {
         showAlert("error", "Erreur lors du chargement des spectacles");
