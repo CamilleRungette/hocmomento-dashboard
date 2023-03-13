@@ -36,7 +36,7 @@ const ConfirmModal = forwardRef(({ content, button, confirmParent }, ref) => {
         <div id="confirm-content" className="confirm-content">
           {modalConfig.content}
           {button ? (
-            <div className="btn-div div-confirm">
+            <div className="btn-div-confirm div-confirm">
               <button className="btn-grey" onClick={closeModal}>
                 Non
               </button>
