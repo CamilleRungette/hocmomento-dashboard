@@ -60,7 +60,7 @@ const Agenda = () => {
     "Décembre",
   ];
 
-  useEffect(() => {
+  const getEvents = () => {
     axios.get(`${url}/events/events`).then((res) => {
       setEvents(res.data);
 
@@ -74,6 +74,10 @@ const Agenda = () => {
       });
       setEventsYear(array);
     });
+  };
+
+  useEffect(() => {
+    getEvents();
   }, []);
 
   const showModal = () => {
@@ -87,6 +91,11 @@ const Agenda = () => {
   const showAlert = (type, message) => {
     setAlert({ type, message });
     alertRef.current.showAlert();
+  };
+
+  const showDialog = (event) => {
+    setEvent(event);
+    confirmRef.current.showModal();
   };
 
   const changeModalContent = (type, thisEvent) => {
@@ -107,25 +116,18 @@ const Agenda = () => {
     showModal();
   };
 
-  const showDialog = (event) => {
-    setEvent(event);
-    confirmRef.current.showModal();
-  };
-
   const deleteEvent = () => {
     axios
-      .post(`${url}/dashboard/delete-event`, { id: thisEvent._id })
-      .then((res) => {
-        if (res.data === "success") {
-          showAlert("success", "L'événement a bien été supprimé");
-        } else {
-          showAlert(
-            "error",
-            "Erreur lors de la suppression de l'événement, veuillez rééssayer plus tard."
-          );
-        }
+      .delete(`${url}/events/delete-event/${thisEvent._id}`)
+      .then(() => {
+        showAlert("success", "L'événement a bien été supprimé");
+        getEvents();
       })
       .catch((error) => {
+        showAlert(
+          "error",
+          "Erreur lors de la suppression de l'événement, veuillez rééssayer plus tard."
+        );
         console.log(error);
       });
   };
