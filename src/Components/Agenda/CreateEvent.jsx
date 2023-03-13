@@ -88,14 +88,13 @@ const CreateEvent = ({ showAlert, closeModal }) => {
   const saveInfos = (e) => {
     e.preventDefault();
 
-    setLoading(true);
-
     let newEvent = { ...event };
     newEvent.dates = dates;
 
     if (!newEvent.title || !newEvent.dates[0].startDate || !newEvent.dates[0].endDate) {
       showAlert("warning", "Le titre et au moins une date sont obligatoires");
     } else {
+      setLoading(true);
       if (picture) {
         axios
           .post(process.env.REACT_APP_CLOUDINARY, picture)
@@ -271,16 +270,18 @@ const CreateEvent = ({ showAlert, closeModal }) => {
           </div>
         )}
 
-        {!loading ? (
-          <button className="btn">Créer</button>
-        ) : (
-          <button className="btn-grey loading-btn" disabled>
-            <div className="loading-div">
-              <img src="/images/loading-btn.gif" alt="Loading ... " />
-            </div>
-            Créer
-          </button>
-        )}
+        <div className="btn-div">
+          {!loading ? (
+            <button className="btn">Créer</button>
+          ) : (
+            <button className="btn-grey loading-btn" disabled>
+              <div className="loading-div">
+                <img src="/images/loading-btn.gif" alt="Loading ... " />
+              </div>
+              Créer
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

@@ -203,17 +203,16 @@
       width: 4%;
     }
   }
+}
+.btn-div {
+  padding: 1rem 0;
 
-  .btn-div {
-    padding: 1rem 0;
+  .btn-grey {
+    display: flex;
+  }
 
-    .btn-grey {
-      display: flex;
-    }
-
-    .loading-div {
-      width: 20px;
-      margin-right: 5px;
-    }
+  .loading-div {
+    width: 20px;
+    margin-right: 5px;
   }
 }
