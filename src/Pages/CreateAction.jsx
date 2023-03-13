@@ -131,8 +131,8 @@ const CreateAction = () => {
     let finalAction = { ...action };
     finalAction.createdAt = dayjs();
 
-    if (!finalAction.title) {
-      showAlert("warning", 'Les champs "Titre" et "description" sont obligatoires');
+    if (!finalAction.place || !finalAction.description) {
+      showAlert("warning", 'Les champs "Lieu" et "description" sont obligatoires');
     } else {
       setLoading(true);
       let promises = pictures.map(async (picture) => {
@@ -211,22 +211,6 @@ const CreateAction = () => {
             label="Lieu"
             value={action.place}
             onChange={handleState("place")}
-            className="input-form full-width"
-            size="small"
-          />
-          <TextField
-            id="city"
-            label="Ville"
-            value={action.city}
-            onChange={handleState("city")}
-            className="input-form full-width"
-            size="small"
-          />
-          <TextField
-            id="title"
-            label="Titre"
-            value={action.title}
-            onChange={handleState("title")}
             className="input-form full-width"
             size="small"
           />

@@ -66,22 +66,26 @@ const EditAction = ({ actionDatas, showAlert, closeModal, getActions }) => {
     e.preventDefault();
     setLoading(true);
 
-    axios
-      .patch(`${url}/actions/update-action/${action._id}`, action)
-      .then(() => {
-        showAlert("success", "Le spectacle a bien été modifié");
-        getActions();
-        closeModal();
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        showAlert(
-          "error",
-          "Erreur lors de la modification du spectacle, veuillez rééssayer plus tard."
-        );
-        setLoading(false);
-      });
+    if (!action.place || !action.description) {
+      showAlert("warning", 'Les champs "Lieu" et "description" sont obligatoires');
+    } else {
+      axios
+        .patch(`${url}/actions/update-action/${action._id}`, action)
+        .then(() => {
+          showAlert("success", "Le spectacle a bien été modifié");
+          getActions();
+          closeModal();
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+          showAlert(
+            "error",
+            "Erreur lors de la modification du spectacle, veuillez rééssayer plus tard."
+          );
+          setLoading(false);
+        });
+    }
   };
 
   return (
@@ -94,22 +98,6 @@ const EditAction = ({ actionDatas, showAlert, closeModal, getActions }) => {
           label="Lieu"
           value={action.place}
           onChange={handleState("place")}
-          className="input-form full-width"
-          size="small"
-        />
-        <TextField
-          id="city"
-          label="Ville"
-          value={action.city}
-          onChange={handleState("city")}
-          className="input-form full-width"
-          size="small"
-        />
-        <TextField
-          id="title"
-          label="Titre"
-          value={action.title}
-          onChange={handleState("title")}
           className="input-form full-width"
           size="small"
         />

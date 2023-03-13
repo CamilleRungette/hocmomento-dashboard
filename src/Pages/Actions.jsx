@@ -105,10 +105,7 @@ const Actions = () => {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <h2>
-                {action.place}
-                {action.title && ` - ${action.title}`}
-              </h2>
+              <h2>{action.place}</h2>
             </AccordionSummary>
             <AccordionDetails>
               <div className="show-buttons-div">
