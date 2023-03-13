@@ -8,6 +8,7 @@ const Index = ({ logged }) => {
 
   useEffect(() => {
     if (!logged) navigate("/login");
+    else navigate("/dashboard");
   }, [logged, navigate]);
 
   return <MainApp />;
