@@ -163,6 +163,7 @@ const Agenda = () => {
                   className="accordion"
                   defaultExpanded={i === 10 ? true : false}
                 >
+                  {console.log(i)}
                   <AccordionSummary
                     expandIcon={<IoIosMore className="icon" />}
                     aria-controls="panel1a-content"
