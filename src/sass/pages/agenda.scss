@@ -1,92 +1,96 @@
-.agenda-main{
-
-  .add-event{
+.agenda-main {
+  .add-event {
     font-size: 50px;
     position: absolute;
     top: 10px;
     right: 15px;
-    color:black;
-    transition-duration: .5s;
+    color: black;
+    transition-duration: 0.5s;
 
-    &:hover{
+    &:hover {
       color: rgb(87, 87, 87);
-      transition-duration: .5s;
-    };
-  };
+      transition-duration: 0.5s;
+    }
+  }
 
-  .events{
+  .events {
     margin: auto;
     margin-top: 4rem;
     margin-bottom: 1rem;
 
-    .accordion{
-
-      .accordion-title{
+    .accordion {
+      .accordion-title {
         position: relative;
 
-        .event-actions{
+        .event-actions {
           position: absolute;
           right: 0;
           top: 0;
-          .event-icon{
+          .event-icon {
             font-size: 26px;
-            transition: .5s;
-  
-            &:hover{
-              color: grey
-            };
-          };
+            transition: 0.5s;
 
-          .trash{
+            &:hover {
+              color: grey;
+            }
+          }
+
+          .trash {
             font-size: 22px !important;
-            margin:0 0 2px 8px;
-          };
-        };
-      };
+            margin: 0 0 2px 8px;
+          }
+        }
+      }
 
-      h3{
+      h3 {
         margin: 0;
         font-weight: 400;
-      };
-      .icon{
-        font-size:30px;
-      };
+      }
+      .icon {
+        font-size: 30px;
+      }
 
-      .event-details{
-        h2{
+      .event-details {
+        h2 {
           font-size: 16px;
           font-weight: 900;
-        };
+        }
 
-        .event-date{
+        .event-date {
           margin-left: 20px;
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
 
-          p{
+          p {
             width: 30%;
             min-width: 200px;
             margin: 5px 0;
-          };
-        };
+          }
+        }
 
-        .event-desc{
+        .event-desc {
           display: flex;
           margin-top: 20px;
 
-          .description{
+          .description {
             width: 75%;
-            
-            text-align: justify
-          };
 
-          .photo{
+            text-align: justify;
+          }
+
+          .photo {
             margin-left: 5%;
             width: 20%;
-          };
-        };
-      };
-    };
-  };
+          }
+
+          .no-photo {
+            font-style: italic;
+            color: gray;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }

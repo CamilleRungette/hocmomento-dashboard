@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ActionGallery from "../Pages/ActionGallery";
 import Actions from "../Pages/Actions";
+import Agenda from "../Pages/Agenda";
 import CreateAction from "../Pages/CreateAction";
 import CreateShow from "../Pages/CreateShow";
 import Dashboard from "../Pages/Dashboard";
@@ -13,9 +14,8 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/agenda" element={<Agenda />} />*/}
+        <Route path="/agenda" element={<Agenda />} />
         <Route path="/actions" element={<Actions />} />
-
         <Route path="/spectacles" element={<Shows />} />
         <Route path="/creation-spectacle" element={<CreateShow />} />
         <Route path="/creation-action" element={<CreateAction />} />
