@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import MainApp from "./MainApp";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Index = ({ logged }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    console.log(location);
     if (!logged) navigate("/login");
-    else navigate("/dashboard");
-  }, [logged, navigate]);
+    else if (location.pathname === "/") navigate("/dashboard");
+  }, [logged, navigate, location]);
 
   return <MainApp />;
 };
