@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { IoIosAdd } from "react-icons/io";
 import { BsTrash } from "react-icons/bs";
+import { BiMinusCircle } from "react-icons/bi";
 import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -28,6 +29,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
   };
 
   const [event, setEvent] = useState(initialEvent);
+  const [loading, setLoading] = useState(false);
   const [picture, setPicture] = useState();
   const [pictureName, setPictureName] = useState();
   const [dates, setDates] = useState([initDate]);
@@ -38,7 +40,6 @@ const CreateEvent = ({ showAlert, closeModal }) => {
 
   const handleDate = (prop) => (e) => {
     let datesState = [...dates];
-    console.log(prop);
     // if (!datesState[prop.i]) {
     //   datesState[prop.i] = initDate;
     // }
@@ -52,26 +53,22 @@ const CreateEvent = ({ showAlert, closeModal }) => {
     setDates(datesState);
   };
 
-  // const addDate = (e) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
+  const addDate = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  //   setDates([...dates, Math.floor(Math.random() * 1000000)]);
+    setDates([...dates, initDate]);
+  };
 
-  //   let eventCopy = { ...event };
-  //   eventCopy.dates.push(initDate);
-  //   setEvent(eventCopy);
-  // };
-
-  // const removeDate = (id, index) => {
-  //   let datesArray = [...dates];
-  //   datesArray = datesArray.filter((date) => date !== id);
-  //   setDates(datesArray);
-
-  //   let eventsArray = { ...event };
-  //   eventsArray.dates.splice(index, 1);
-  //   setEvent(eventsArray);
-  // };
+  const removeDate = (i) => {
+    let datesArray = [...dates];
+    if (datesArray.length === 1) {
+      datesArray = [initDate];
+    } else {
+      datesArray = datesArray.splice(i, 1);
+    }
+    setDates(datesArray);
+  };
 
   const fileSelectedHandler = (e) => {
     const formData = new FormData();
@@ -90,6 +87,8 @@ const CreateEvent = ({ showAlert, closeModal }) => {
 
   const saveInfos = (e) => {
     e.preventDefault();
+
+    setLoading(true);
 
     let newEvent = { ...event };
     newEvent.dates = dates;
@@ -111,6 +110,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
                 setEvent(initialEvent);
                 setDates([initDate]);
                 closeModal();
+                setLoading(false);
               })
               .catch((error) => {
                 showAlert(
@@ -118,6 +118,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
                   "Erreur lors de la création de l'événement, veuillez réessayer plus tard"
                 );
                 console.log(error);
+                setLoading(false);
               });
           })
           .catch((error) => {
@@ -126,6 +127,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
               "Erreur avec le chargement de la photo, veuillez réessayer plus tard"
             );
             console.log(error);
+            setLoading(false);
           });
       } else {
         axios
@@ -137,6 +139,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
             setEvent(initialEvent);
             setDates([initDate]);
             closeModal();
+            setLoading(false);
           })
           .catch((error) => {
             showAlert(
@@ -144,6 +147,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
               "Erreur lors de la création de l'événement, veuillez réessayer plus tard"
             );
             console.log(error);
+            setLoading(false);
           });
       }
     }
@@ -179,36 +183,30 @@ const CreateEvent = ({ showAlert, closeModal }) => {
 
         <h4>Dates</h4>
         {dates.map((date, i) => (
-          <div key={date} className="dates">
+          <div key={`date${i}`} className="dates">
             <div className="date-picker-div input-form">
-              <LocalizationProvider
-                dateAdapter={AdapterDayjs}
-                adapterLocale="fr"
-                className="date-picker"
-              >
+              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
                 <DemoContainer components={["MobileDateTimePicker"]}>
                   <MobileDateTimePicker
                     label="Début"
                     onChange={handleDate({ type: "startDate", i })}
                     value={date.startDate}
+                    className="date-picker"
                   />
                 </DemoContainer>
               </LocalizationProvider>
-              <LocalizationProvider
-                dateAdapter={AdapterDayjs}
-                adapterLocale="fr"
-                className="date-picker"
-              >
+              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
                 <DemoContainer components={["MobileDateTimePicker"]}>
                   <MobileDateTimePicker
                     defaultValue={dayjs()}
                     label="Fin"
                     onChange={handleDate({ type: "endDate", i })}
                     value={date.endDate}
+                    size="small"
                   />
                 </DemoContainer>
               </LocalizationProvider>
-              {/* <BiMinusCircle className="remove-icon pointer" onClick={() => removeDate(date, i)} /> */}
+              <BiMinusCircle className="remove-icon pointer" onClick={() => removeDate(i)} />
             </div>
 
             <div className="input-form adress-line">
@@ -245,9 +243,9 @@ const CreateEvent = ({ showAlert, closeModal }) => {
           </div>
         ))}
 
-        {/* <button className="add-date pointer" onClick={(e) => addDate(e)}>
+        <button className="add-date pointer" onClick={(e) => addDate(e)}>
           <IoIosAdd /> Ajouter
-        </button> */}
+        </button>
 
         <h4>Télécharger une photo</h4>
 
@@ -273,9 +271,16 @@ const CreateEvent = ({ showAlert, closeModal }) => {
           </div>
         )}
 
-        <div className="btn-div">
+        {!loading ? (
           <button className="btn">Créer</button>
-        </div>
+        ) : (
+          <button className="btn-grey loading-btn" disabled>
+            <div className="loading-div">
+              <img src="/images/loading-btn.gif" alt="Loading ... " />
+            </div>
+            Créer
+          </button>
+        )}
       </form>
     </div>
   );
