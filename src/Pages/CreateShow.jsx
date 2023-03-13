@@ -15,6 +15,7 @@ import { VscClose } from "react-icons/vsc";
 
 import url from "../url";
 import SimpleEditor from "../Components/Editor/Editor";
+import dayjs from "dayjs";
 
 const CreateShow = () => {
   const initLink = {
@@ -126,6 +127,7 @@ const CreateShow = () => {
     e.preventDefault();
 
     let finalShow = { ...show };
+    finalShow.createdAt = dayjs();
 
     if (!finalShow.title) {
       showAlert("warning", 'Les champs "Titre" et "description" sont obligatoires');

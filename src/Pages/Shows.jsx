@@ -43,6 +43,7 @@ const Shows = () => {
     axios
       .get(`${url}/shows/shows`)
       .then((res) => {
+        console.log(res.data);
         setShows(res.data);
       })
       .catch((e) => {

@@ -41,7 +41,7 @@ const ConfirmModal = forwardRef(({ content, button, confirmParent }, ref) => {
                 Non
               </button>
               <button className="btn-red" onClick={confirmModal}>
-                Oui{" "}
+                Oui
               </button>
             </div>
           ) : (

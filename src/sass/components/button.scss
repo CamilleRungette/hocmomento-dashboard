@@ -1,10 +1,10 @@
-@import '../global/colors.scss';
+@import "../global/colors.scss";
 
-.btn-div{
+.btn-div {
   text-align: center !important;
-};
+}
 
-.btn{
+.btn {
   background-color: $primary;
   border: 1px solid $primary;
   color: white;
@@ -12,18 +12,17 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   width: auto;
   margin: auto;
 
-  &:hover{
-    background-color: #0079bb ;
+  &:hover {
+    background-color: #0079bb;
     border: 1px solid #0079bb;
-  };
-};
+  }
+}
 
-
-.btn-outlined{
+.btn-outlined {
   background-color: white;
   border: 1px solid $primary;
   color: $primary;
@@ -31,17 +30,17 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   width: auto;
   margin: auto;
 
-  &:hover{
+  &:hover {
     background-color: $primary;
     color: white;
-  };
-};
+  }
+}
 
-.btn-red{
+.btn-red {
   background-color: $red;
   border: 1px solid $red;
   color: white;
@@ -49,17 +48,17 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   width: auto;
   margin: auto;
 
-  &:hover{
+  &:hover {
     background-color: rgb(219, 63, 63);
     border: 1px solid rgb(219, 63, 63);
-  };
-};
+  }
+}
 
-.btn-red-outlined{
+.btn-red-outlined {
   background-color: white;
   border: 1px solid $red;
   color: $red;
@@ -67,17 +66,17 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   width: auto;
   margin: auto;
 
-  &:hover{
+  &:hover {
     background-color: $red;
     color: white;
-  };
-};
+  }
+}
 
-.btn-grey{
+.btn-grey {
   background-color: rgb(155, 155, 155);
   border: 1px solid rgb(155, 155, 155);
   color: white;
@@ -85,17 +84,17 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   width: auto;
   margin: auto;
 
-  &:hover{
+  &:hover {
     background-color: rgb(196, 196, 196);
     border: 1px solid rgb(196, 196, 196);
-  };
-};
+  }
+}
 
-.btn-grey-outlined{
+.btn-grey-outlined {
   background-color: white;
   border: 1px solid rgb(133, 133, 133);
   color: rgb(133, 133, 133);
@@ -103,12 +102,12 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   width: auto;
   margin: auto;
 
-  &:hover{
+  &:hover {
     background-color: rgb(155, 155, 155);
     color: white;
-  };
-};
+  }
+}
