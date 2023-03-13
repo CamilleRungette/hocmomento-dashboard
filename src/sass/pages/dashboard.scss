@@ -1,0 +1,48 @@
+.dashboard-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 64px;
+
+  .dashboard-card {
+    min-height: 200px;
+    background-color: white !important;
+    width: 40% !important;
+    margin-bottom: 64px !important;
+    padding: 5px !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 10px 3px rgb(212, 212, 212) !important;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 20px;
+    color: $primary;
+    font-weight: lighter;
+    padding-left: 20px;
+  }
+
+  .separator {
+    border-top: 1px solid $primary;
+    position: absolute;
+    width: 99%;
+    top: 65px;
+  }
+
+  .value-div {
+    text-align: center;
+  }
+
+  .value {
+    margin-top: 48px;
+    margin-bottom: 20px;
+    font-size: 80px;
+    color: $secondary;
+  }
+
+  .subtext {
+    color: $secondary;
+  }
+}
