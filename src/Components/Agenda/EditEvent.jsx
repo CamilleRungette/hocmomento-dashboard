@@ -110,8 +110,10 @@ const EditEvent = ({ showAlert, closeModal, eventInfos, getEvents }) => {
                 setPictureName();
                 setEvent(initialEvent);
                 setDates([initDate]);
-                closeModal();
-                setLoading(false);
+                setTimeout(function () {
+                  setLoading(false);
+                  closeModal();
+                }, 500);
                 getEvents();
               })
               .catch((error) => {
@@ -139,8 +141,10 @@ const EditEvent = ({ showAlert, closeModal, eventInfos, getEvents }) => {
             setPictureName();
             setEvent(initialEvent);
             setDates([initDate]);
-            closeModal();
-            setLoading(false);
+            setTimeout(function () {
+              setLoading(false);
+              closeModal();
+            }, 500);
             getEvents();
           })
           .catch((error) => {
@@ -273,7 +277,7 @@ const EditEvent = ({ showAlert, closeModal, eventInfos, getEvents }) => {
 
         <div className="btn-div">
           {!loading ? (
-            <button className="btn">Créer</button>
+            <button className="btn">Enregistrer</button>
           ) : (
             <button className="btn-grey loading-btn" disabled>
               <div className="loading-div">
