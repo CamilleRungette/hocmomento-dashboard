@@ -31,7 +31,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
   const initDates = [Math.floor(Math.random() * 1000000)];
 
   const [event, setEvent] = useState(initialEvent);
-  const [picture, setPicture] = useState();
+  const [setPicture] = useState();
   const [pictureName, setPictureName] = useState();
   const [dates, setDates] = useState(initDates);
 
