@@ -12,7 +12,7 @@ import url from "../../url";
 import axios from "axios";
 import "dayjs/locale/fr";
 
-const CreateEvent = ({ showAlert, closeModal }) => {
+const CreateEvent = ({ showAlert, closeModal, getEvents }) => {
   const initDate = {
     startDate: "",
     endDate: "",
@@ -40,9 +40,6 @@ const CreateEvent = ({ showAlert, closeModal }) => {
 
   const handleDate = (prop) => (e) => {
     let datesState = [...dates];
-    // if (!datesState[prop.i]) {
-    //   datesState[prop.i] = initDate;
-    // }
 
     if (prop.type === "startDate" || prop.type === "endDate") {
       datesState[prop.i][prop.type] = e;
@@ -110,6 +107,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
                 setDates([initDate]);
                 closeModal();
                 setLoading(false);
+                getEvents();
               })
               .catch((error) => {
                 showAlert(
@@ -117,7 +115,6 @@ const CreateEvent = ({ showAlert, closeModal }) => {
                   "Erreur lors de la création de l'événement, veuillez réessayer plus tard"
                 );
                 console.log(error);
-                setLoading(false);
               });
           })
           .catch((error) => {
@@ -139,6 +136,7 @@ const CreateEvent = ({ showAlert, closeModal }) => {
             setDates([initDate]);
             closeModal();
             setLoading(false);
+            getEvents();
           })
           .catch((error) => {
             showAlert(

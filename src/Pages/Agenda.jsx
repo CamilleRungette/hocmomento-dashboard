@@ -9,9 +9,8 @@ import axios from "axios";
 import BasicModal from "../Components/Modal/BasicModal";
 import ConfirmModal from "../Components/Modal/ConfirmModal";
 import CreateEvent from "../Components/Agenda/CreateEvent";
-// import EditEvent from "../Components/Agenda/EditEvent";
+import EditEvent from "../Components/Agenda/EditEvent";
 import AlertMessage from "../Components/Alert/Alert";
-
 import url from "../url";
 
 const Agenda = () => {
@@ -101,17 +100,19 @@ const Agenda = () => {
   const changeModalContent = (type, thisEvent) => {
     if (type === "edit") {
       setEvent(thisEvent);
-      // setModalContent(
-      //   <EditEvent
-      //     showAlert={showAlert}
-      //     closeModal={closeModal}
-      //     eventInfos={thisEvent}
-      //   />
-      // );
+      setModalContent(
+        <EditEvent
+          showAlert={showAlert}
+          closeModal={closeModal}
+          eventInfos={thisEvent}
+          getEvents={getEvents}
+        />
+      );
     } else if (type === "create") {
-      console.log("create");
       setEvent(initialEvent);
-      setModalContent(<CreateEvent showAlert={showAlert} closeModal={closeModal} />);
+      setModalContent(
+        <CreateEvent showAlert={showAlert} closeModal={closeModal} getEvents={getEvents} />
+      );
     }
     showModal();
   };
@@ -205,6 +206,28 @@ const Agenda = () => {
                                       )}
                                       au {new Date(date.endDate).getDate()}{" "}
                                       {months[new Date(date.endDate).getMonth()]}
+                                    </span>
+                                  )}
+                                  {new Date(date.startDate).getHours() ===
+                                  new Date(date.endDate).getHours() ? (
+                                    <span>
+                                      {" "}
+                                      à {new Date(date.startDate).getHours()}h{" "}
+                                      {new Date(date.startDate).getMinutes() !== 0
+                                        ? new Date(date.startDate).getMinutes()
+                                        : ""}
+                                    </span>
+                                  ) : (
+                                    <span>
+                                      {" "}
+                                      de {new Date(date.startDate).getHours()}h
+                                      {new Date(date.startDate).getMinutes() !== 0
+                                        ? new Date(date.startDate).getMinutes()
+                                        : ""}{" "}
+                                      à {new Date(date.endDate).getHours()}h
+                                      {new Date(date.startDate).getMinutes() !== 0
+                                        ? new Date(date.startDate).getMinutes()
+                                        : ""}
                                     </span>
                                   )}
                                 </p>
